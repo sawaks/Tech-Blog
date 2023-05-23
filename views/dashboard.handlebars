@@ -1,0 +1,17 @@
+<!-- Loop over each object in the projects array -->
+{{#if blog.length}}
+{{#each blogs as |blog| }}
+<div>
+    <div>
+        <h2>
+            {{blog.title}}
+        </h2>
+        <p> {{format_date blog.date_created}}</p>
+        <a href="/dashboard/{{blog.id}}"></a>
+    </div>
+</div>
+{{/each}}
+{{/if}}
+<div>
+    <a href="/dashboard/create">Create New Blog</a>
+</div>

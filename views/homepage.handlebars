@@ -1,0 +1,12 @@
+<!-- Loop over each object in the projects array -->
+{{#each blogs as |blog| }}
+<div>
+    <div>
+        <h2>
+            <a href="/comment/{{blog.id}}">{{blog.title}}</a>
+        </h2>
+        <p>{{blog.contents}}</p>
+        <p>Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+    </div>
+</div>
+{{/each}}

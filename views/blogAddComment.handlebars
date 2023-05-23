@@ -1,0 +1,15 @@
+<div>
+    <div>
+        <h2>
+            {{blog.title}}
+        </h2>
+        <p>{{blog.contents}}</p>
+        <p>Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+    </div>
+    <div>
+        <form>
+            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            <button>Submit</button>
+        </form>
+    </div>
+</div>
