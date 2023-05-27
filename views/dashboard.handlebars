@@ -1,17 +1,21 @@
 <!-- Loop over each object in the projects array -->
-{{#if blog.length}}
+{{#if blogs.length}}
 {{#each blogs as |blog| }}
 <div>
-    <div>
-        <h2>
-            {{blog.title}}
-        </h2>
-        <p> {{format_date blog.date_created}}</p>
-        <a href="/dashboard/{{blog.id}}"></a>
+    <div class="blog-title-wrap">
+        {{!-- <a href="/api/dashboard/{{blog.id}}"> --}}
+            <a href="/dashboard/{{blog.id}}">
+                <h2>
+                    {{blog.title}}
+                </h2>
+            </a>
+            <p> {{format_date blog.date_created}}</p>
+
     </div>
 </div>
 {{/each}}
 {{/if}}
+
 <div>
-    <a href="/dashboard/create">Create New Blog</a>
+    <a href="/create">Create New Blog</a>
 </div>

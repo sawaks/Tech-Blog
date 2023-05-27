@@ -11,13 +11,11 @@ router.get('/', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
+
       ],
     });
-
-    // Serialize data so the template can read it
+    // res.status(200).json(blogData);
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
     res.render('homepage', {
       blogs,
       logged_in: req.session.logged_in
@@ -35,23 +33,24 @@ router.get('/comment/:id', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
-      ],
-    });
-
-    const commentData = await Comment.findByPk(req.params.id, {
-      include: [
         {
-          model: User,
-          attributes: ['name'],
-        },
+          model: Comment,
+
+          include: [
+            { model: User }
+          ]
+
+        }
       ],
     });
 
     const blog = blogData.get({ plain: true });
-    const comment = commentData.get({ plain: true });
+    console.log(blog);
+
+
 
     res.render('blogAddComment', {
-      ...blog && comment,
+      ...blog,
       logged_in: req.session.logged_in,
 
     });
@@ -72,6 +71,7 @@ router.get('/dashboard/:id', async (req, res) => {
     });
 
     const blog = blogData.get({ plain: true });
+    console.log(blog);
 
     res.render('updateBlog', {
       ...blog,
@@ -88,10 +88,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      include: [{ model: Blog }],
     });
 
     const user = userData.get({ plain: true });
+
 
     res.render('dashboard', {
       ...user,
@@ -102,8 +103,15 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-router.get('/dashboard/create', withAuth, async (req, res) => {
+router.get('/create', withAuth, async (req, res) => {
   try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Blog }],
+    });
+
+    const user = userData.get({ plain: true });
+
     res.render('createBlog', {
       ...user,
       logged_in: true
@@ -132,4 +140,7 @@ router.get('/signup', (req, res) => {
 
   res.render('signup');
 });
+
+
+
 module.exports = router;

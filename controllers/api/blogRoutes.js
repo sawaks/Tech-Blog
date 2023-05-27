@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog } = require('../../models');
+const { Blog, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/create', withAuth, async (req, res) => {
@@ -15,19 +15,26 @@ router.post('/create', withAuth, async (req, res) => {
   }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const newBlog = await Blog.update({
-      ...req.body,
-      user_id: req.session.user_id,
-    },
+    const updateBlogData = await Blog.update(
+      {
+        title: req.body.title,
+        contents: req.body.contents,
+
+      },
       {
         where: {
           id: req.params.id,
         },
       });
 
-    res.status(200).json(newBlog);
+    if (!updateBlogData) {
+      res.status(404).json({ message: 'No blog found with that id!' });
+      return;
+    }
+
+    res.status(200).json(updateBlogData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -52,5 +59,8 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+
 
 module.exports = router;

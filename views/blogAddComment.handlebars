@@ -1,15 +1,31 @@
 <div>
     <div>
         <h2>
-            {{blog.title}}
+            {{title}}
         </h2>
-        <p>{{blog.contents}}</p>
-        <p>Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+        <p>{{contents}}</p>
+        <p>Created by {{user.name}} on {{format_date date_created}}</p>
     </div>
     <div>
-        <form>
+        <form class="add-comment-form">
             <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-            <button>Submit</button>
+            <button type="submit" data-id="{{id}}" class="btn btn-primary comment-btn">Submit</button>
         </form>
     </div>
+    {{#if comments.length}}
+    {{#each comments as |comment| }}
+    <div>
+        <div>
+            <h4>
+                Comment:
+            </h4>
+            <p>{{comment.comment}}</p>
+            <p>Created by {{comment.user.name}} on {{ format_date comment.date_created}}</p>
+
+
+        </div>
+    </div>
+    {{/each}}
+    {{/if}}
 </div>
+<script src="./js/addComment.js"></script>

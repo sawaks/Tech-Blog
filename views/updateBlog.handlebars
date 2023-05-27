@@ -2,20 +2,20 @@
     <form class="update-blog-form">
         <div class="form-group">
             <label for="project-name">Title:</label>
-            <input class="form-input" type="text" id="blog-title" name="blog-title" placeholder="{{blog.title}}" />
+            <input class="form-input" type="text" id="blog-title" name="blog-title" value="{{title}}" />
         </div>
         <div class="form-group">
             <label for="project-desc">contents:</label>
-            <textarea class="form-input" id="blog-contents" name="blog-contents">{{blog.contents}}</textarea>
+            <textarea class="form-input" id="blog-contents" name="blog-contents">{{contents}}</textarea>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button class="btn btn-primary update-btn" data-id="{{id}}">Update</button>
         </div>
 
     </form>
     <div class="wrap-delete-btn">
-        <button class="btn btn-danger delete-btn" data-id="{{blog.id}}">DELETE</button>
+        <button class="btn btn-danger delete-btn" data-id="{{id}}">DELETE</button>
     </div>
 </div>
 
-<script src="./js/updateBlog.js"></script>
+<script src="./js/update.js"></script>
