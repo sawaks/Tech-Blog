@@ -1,7 +1,187 @@
-h1 {
-  color: brown;
+a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
 }
 
-.blog-title-wrap {
-  border: 1px solid black;
+body {
+  background-color: #F6E7D8;
+}
+
+h2 {
+  color: #874356;
+  font-weight: 700;
+}
+
+h3 {
+  color: #F6E7D8;
+  font-weight: 700;
+}
+
+h3 a {
+  color: #F6E7D8;
+  font-weight: 700;
+
+}
+
+label {
+  font: 15px;
+  font-weight: 700;
+  color: #874356;
+}
+
+.btn-danger,
+/* .btn-warning:hover, */
+.btn-danger:active,
+.btn-danger:visited,
+.btn-danger:focus {
+  background-color: #874356;
+  border-color: #874356;
+  color: white;
+}
+
+.btn-warning,
+/* .btn-warning:hover, */
+.btn-warning:active,
+.btn-warning:visited,
+.btn-warning:focus {
+  background-color: #F68989;
+  border-color: #F68989;
+  color: white;
+}
+
+/* main */
+.site-title {
+  color: #874356;
+  font-weight: 800;
+}
+
+header {
+  padding: 0 50px;
+  background-color: #F68989;
+}
+
+header a {
+  color: #F6E7D8;
+}
+
+.site-title-wrap {
+  padding-top: 26px;
+}
+
+.nav-wrap {
+
+  height: 100px;
+  line-height: 90px;
+
+}
+
+.nav-btn-wrap nav div div {
+  text-align: right;
+}
+
+nav a {
+  font-size: 25px;
+  padding-left: 40px;
+}
+
+/* homepage */
+.blog-list-wrap {
+  padding: 50px;
+}
+
+.card-wrap {
+  margin-bottom: 40px;
+}
+
+.card-header {
+  background-color: #C65D7B;
+  border: 1px solid #C65D7B;
+}
+
+/* login , signup */
+.title-wrap {
+  border-bottom: 5px solid #874356;
+}
+
+.page-wrap {
+  padding: 50px 100px;
+}
+
+.form-group {
+  margin-top: 30px;
+}
+
+.submit-btn-wrap {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.login-btn,
+.signup-btn {
+  padding: 10px 40px;
+
+}
+
+.singup-wrap,
+.create-btn-wrap {
+  padding-bottom: 10px;
+  text-align: right;
+  border-bottom: 5px solid #874356;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.singup-wrap a {
+  color: #874356;
+}
+
+/* dashboard */
+
+.dashboardpPage-wrap {
+  padding: 50px;
+}
+
+.create-btn-wrap a {
+  color: #874356;
+
+}
+
+/* update */
+.wrap-update-blog-form {
+  padding: 50px;
+}
+
+.wrap-delete-btn {
+  text-align: left;
+  margin-top: 40px;
+
+}
+
+.update-btn-wrap {
+  text-align: right;
+  margin-top: 40px;
+}
+
+.commentToBlog-wrap,
+.comment-wrap {
+  margin-top: 40px;
+}
+
+.comentList-title-wrap {
+  margin-top: 40px;
+}
+
+@media screen and (max-width:480px) {
+  .site-title {
+    font-size: 20px;
+  }
+
+  nav a {
+    font-size: 15px;
+  }
+
+  nav .btn {
+    font-size: 13px;
+  }
 }

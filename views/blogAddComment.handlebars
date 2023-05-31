@@ -1,28 +1,51 @@
-<div>
-    <div>
-        <h2>
-            {{title}}
-        </h2>
-        <p>{{contents}}</p>
-        <p>Created by {{user.name}} on {{format_date date_created}}</p>
+<div class="page-wrap">
+    <div class="title-wrap">
+        <h2>Write Up Your Comment</h2>
     </div>
+    <div class="commentToBlog-wrap">
+        <div class="card">
+            <div class="card-header">
+                <h3> {{title}}</h3>
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>{{contents}}</p>
+                    <footer class="blockquote-footer">Created by {{user.name}} on {{format_date date_created}}
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
+
     <div>
-        <form class="add-comment-form">
-            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-            <button type="submit" data-id="{{id}}" class="btn btn-primary comment-btn">Submit</button>
+        <form class="add-comment-form form-group">
+            <textarea class="form-input form-control" name="comment" id="comment" rows="4"></textarea>
+            <div class="form-group submit-btn-wrap"><button type="submit" data-id="{{id}}"
+                    class="btn btn-danger comment-btn">Submit</button></div>
+
         </form>
     </div>
     {{#if comments.length}}
+    <div class="title-wrap comentList-title-wrap">
+        <h2>Previous Comments</h2>
+    </div>
+
     {{#each comments as |comment| }}
-    <div>
-        <div>
-            <h4>
-                Comment:
-            </h4>
-            <p>{{comment.comment}}</p>
-            <p>Created by {{comment.user.name}} on {{ format_date comment.date_created}}</p>
+    <div class="comment-wrap">
 
-
+        <div class="card">
+            <div class="card-header">
+                <h3>Comment:</h3>
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>{{comment.comment}}</p>
+                    <footer class="blockquote-footer">Created by {{comment.user.name}} on {{ format_date
+                        comment.date_created}}
+                    </footer>
+                </blockquote>
+            </div>
         </div>
     </div>
     {{/each}}

@@ -1,21 +1,25 @@
-<!-- Loop over each object in the projects array -->
-{{#if blogs.length}}
-{{#each blogs as |blog| }}
-<div>
-    <div class="blog-title-wrap">
-        {{!-- <a href="/api/dashboard/{{blog.id}}"> --}}
-            <a href="/dashboard/{{blog.id}}">
-                <h2>
-                    {{blog.title}}
-                </h2>
-            </a>
-            <p> {{format_date blog.date_created}}</p>
+<div class="dashboardpPage-wrap">
+    {{#if blogs.length}}
+    {{#each blogs as |blog| }}
+    <div class="card-wrap">
 
+        <div class="card">
+            <div class="card-header">
+                <h3><a href="/dashboard/{{blog.id}}">{{blog.title}}</a></h3>
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+
+                    <footer class="blockquote-footer">{{format_date blog.date_created}}
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
     </div>
-</div>
-{{/each}}
-{{/if}}
+    {{/each}}
+    {{/if}}
 
-<div>
-    <a href="/create">Create New Blog</a>
+    <div class="create-btn-wrap">
+        <a href="/create">> Create New Blog</a>
+    </div>
 </div>
