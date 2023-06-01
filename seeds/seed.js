@@ -13,15 +13,49 @@ const seedDatabase = async () => {
         returning: true,
     });
 
-    await Comment.bulkCreate(commentData);
 
-    for (const blog of blogData) {
-        await Blog.create({
-            ...blog,
-            user_id: users[Math.floor(Math.random() * users.length)].id,
-        });
-    }
 
+    // for (const blog of blogData) {
+    //     await Blog.create({
+    //         ...blog,
+    //         user_id: users[Math.floor(Math.random() * users.length)].id,
+    //     });
+    // }
+
+    await Blog.create({
+        ...blogData[0],
+        user_id: 1
+    })
+
+    await Blog.create({
+        ...blogData[1],
+        user_id: 2
+    })
+
+    await Blog.create({
+        ...blogData[2],
+        user_id: 3
+    })
+
+    // await Comment.bulkCreate(commentData);
+
+    await Comment.create({
+        ...commentData[0],
+        user_id: 2,
+        blog_id: 1
+    });
+
+    await Comment.create({
+        comment: commentData[1].comment,
+        user_id: 3,
+        blog_id: 2
+    });
+
+    await Comment.create({
+        comment: commentData[2].comment,
+        user_id: 1,
+        blog_id: 3
+    });
     // for (const comment of commentData) {
     //     await Comment.create({
     //         ...comment,
