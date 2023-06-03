@@ -18,3 +18,4 @@ This project is the proof that I learned through week 14. This application is a
 https://github.com/sawaks/Tech-Blog.git
 
 ## The URL of deployed application
+https://tech-blog-by-sawako.herokuapp.com/
